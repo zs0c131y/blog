@@ -1,0 +1,45 @@
+# Site settings
+title: Adarsh's Blog
+email: gupthadarsh@gmail.com
+description: >-
+  Thoughts on development, cybersecurity, and technology.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://adarshagupta.com"
+github_username: zs0c131y
+linkedin_username: adarshagupta
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
+paginate: 10
+paginate_path: "/page/:num/"
+
+# Plugin settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git/
+
+# Collections
+collections:
+  categories:
+    output: true
+    permalink: /category/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Adarsh Gupta"

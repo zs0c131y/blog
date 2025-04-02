@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{
+      site.title }}{% endif %}
+    </title>
+
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+
+    <!-- Material Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ '/assets/css/styles.css' | relative_url }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="{{ '/' | relative_url }}" class="site-title"
+          >{{ site.title }}</a
+        >
+        <nav class="main-nav">
+          <a href="{{ '/' | relative_url }}">Home</a>
+          <a href="{{ '/about' | relative_url }}">About</a>
+          <a href="{{ '/archive' | relative_url }}">Archive</a>
+        </nav>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          <span class="material-symbols-rounded">dark_mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">{{ content }}</main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>
+            &copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights
+            reserved.
+          </p>
+          <div class="social-links">
+            {% if site.github_username %}
+            <a
+              href="https://github.com/{{ site.github_username }}"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            {% endif %} {% if site.linkedin_username %}
+            <a
+              href="https://linkedin.com/in/{{ site.linkedin_username }}"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+  </body>
+</html>

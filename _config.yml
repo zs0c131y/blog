@@ -1,0 +1,70 @@
+# Site settings
+title: Adarsh Gupta | Blog
+email: gupthadarsh@gmail.com
+description: >-
+  Thoughts, tutorials, and insights on full stack development, cybersecurity, 
+  and UI/UX design by Adarsh Gupta, a BCA student at CHRIST University.
+baseurl: "" # Leave empty if using custom domain
+url: "https://adarshagupta.com"
+github_username: zs0c131y
+linkedin_username: adarshagupta
+
+# Author info
+author:
+  name: Adarsh Gupta
+  bio: >-
+    BCA student at CHRIST (Deemed to be University), Bangalore, with a passion for 
+    web development and cybersecurity. I specialize in full-stack development, 
+    cybersecurity, and UI/UX design.
+  avatar: /assets/images/profile.jpg # Add your profile picture to this path
+
+# Build settings
+theme: minima # Default theme, can be changed
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+
+# Pagination settings
+paginate: 5
+paginate_path: "/page:num/"
+
+# Collections for different content types
+collections:
+  tutorials:
+    output: true
+    permalink: /:collection/:title/
+  projects:
+    output: true
+    permalink: /:collection/:title/
+  notes:
+    output: true
+    permalink: /:collection/:title/
+
+# Default front matter settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Adarsh Gupta"
+      comments: true
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "tutorial"
+      author: "Adarsh Gupta"
+      comments: true
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      author: "Adarsh Gupta"
+      comments: true
+
+# Category and tag settings
+permalink: /:categories/:title/

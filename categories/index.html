@@ -1,0 +1,21 @@
+---
+layout: page
+title: Categories
+permalink: /categories/
+---
+
+<div class="categories-page">
+  {% for category in site.categories %}
+  <div class="category-group">
+    <h3 id="{{ category[0] | slugify }}">{{ category[0] | capitalize }}</h3>
+    <ul class="post-list">
+      {% for post in category[1] %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <small class="post-date">{{ post.date | date: "%b %-d, %Y" }}</small>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>

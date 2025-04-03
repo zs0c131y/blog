@@ -1,0 +1,12 @@
+---
+layout: home
+---
+
+<h1>Welcome to Adarsh Gupta's Blog</h1>
+<ul>
+  {% for post in paginator.posts %}
+  <li>
+    <a href="{{ post.url }}">{{ post.title }}</a>
+  </li>
+  {% endfor %}
+</ul>

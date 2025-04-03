@@ -1,6 +1,0 @@
-{
-  "files.associations": {
-    "*.json.liquid": "liquid"
-  },
-  "json.validate.enable": false
-}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - My Personal Blog</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/blog.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <a href="index.html">My Blog</a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#about">About</a>
+      </div>
+      <div class="mobile-nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+      <h1>Blog Posts</h1>
+      <div class="blog-filters">
+        <input type="text" id="searchInput" placeholder="Search posts..." />
+        <select id="categoryFilter">
+          <option value="all">All Categories</option>
+          <option value="technology">Technology</option>
+          <option value="photography">Photography</option>
+          <option value="travel">Travel</option>
+        </select>
+        <select id="timeFilter">
+          <option value="latest">Latest First</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Blog Grid -->
+    <section class="blog-listing">
+      <div id="blogGrid" class="blog-grid">
+        <!-- Blog posts will be dynamically loaded here -->
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+  </body>
+</html>

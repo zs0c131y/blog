@@ -1,12 +1,174 @@
----
-layout: home
----
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Blog</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <a href="#home">My Blog</a>
+      </div>
+      <div class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="mobile-nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
 
-<h1>Welcome to Adarsh Gupta's Blog</h1>
-<ul>
-  {% for post in paginator.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </li>
-  {% endfor %}
-</ul>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Welcome to My Blog</h1>
+        <p>
+          Exploring ideas, sharing knowledge, and documenting my journey through
+          technology and life.
+        </p>
+        <a href="#blog" class="cta-button">Explore Posts</a>
+      </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="blog-section" id="blog">
+      <h2>Featured Posts</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img
+            src="https://placehold.co/800x600/0a0a0a/3b82f6?text=Web+Development"
+            alt="Web Development"
+          />
+          <div class="blog-content">
+            <div class="blog-category">Technology</div>
+            <h3>Getting Started with Web Development</h3>
+            <div class="blog-meta">
+              <span class="date">April 3, 2024</span>
+              <span class="read-time">5 min read</span>
+            </div>
+            <p class="excerpt">
+              Learn the basics of HTML, CSS, and JavaScript to start your web
+              development journey.
+            </p>
+            <a href="blog.html" class="read-more">Read More</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <img
+            src="https://placehold.co/800x600/0a0a0a/3b82f6?text=Photography"
+            alt="Photography"
+          />
+          <div class="blog-content">
+            <div class="blog-category">Photography</div>
+            <h3>The Art of Photography</h3>
+            <div class="blog-meta">
+              <span class="date">April 2, 2024</span>
+              <span class="read-time">7 min read</span>
+            </div>
+            <p class="excerpt">
+              Discover essential tips and techniques for capturing stunning
+              photographs.
+            </p>
+            <a href="blog.html" class="read-more">Read More</a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <img
+            src="https://placehold.co/800x600/0a0a0a/3b82f6?text=Travel"
+            alt="Travel"
+          />
+          <div class="blog-content">
+            <div class="blog-category">Travel</div>
+            <h3>Travel Adventures</h3>
+            <div class="blog-meta">
+              <span class="date">April 1, 2024</span>
+              <span class="read-time">6 min read</span>
+            </div>
+            <p class="excerpt">
+              Exploring hidden gems and must-visit destinations around the
+              world.
+            </p>
+            <a href="blog.html" class="read-more">Read More</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <img
+          src="https://placehold.co/300x300/0a0a0a/3b82f6?text=Profile"
+          alt="Profile Picture"
+          class="profile-pic"
+        />
+        <div class="about-text">
+          <p>
+            Hello! I'm a passionate blogger sharing my thoughts and experiences
+            on technology, photography, and travel. With a background in web
+            development, I love exploring new technologies and sharing my
+            knowledge with others.
+          </p>
+          <p>
+            When I'm not coding, you can find me behind the camera capturing
+            moments or planning my next adventure. This blog is my way of
+            documenting my journey and hopefully inspiring others along the way.
+          </p>
+          <div class="social-links">
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>My Blog</h3>
+          <p>Sharing thoughts and experiences through words.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

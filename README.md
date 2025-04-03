@@ -69,7 +69,7 @@ Update the social media links in both the About section and Footer of `index.htm
 4. Select the branch you want to deploy (usually `main` or `master`)
 5. Click "Save"
 
-Your blog will be available at `https://your-username.github.io/repository-name`
+Your blog will be available at `https://zs0c131y.github.io/blog`
 
 ## Custom Domain
 

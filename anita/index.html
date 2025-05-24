@@ -208,8 +208,12 @@
         display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 4rem;
-        align-items: center;
-        margin-top: 2rem;
+        align-items: flex-start;
+        margin-top: 3rem;
+      }
+
+      .about-image-container {
+        text-align: center;
       }
 
       .about-image {
@@ -218,21 +222,95 @@
         padding: 20px;
         text-align: center;
         color: white;
-        min-height: 300px;
+        min-height: 320px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        transition: transform 0.3s ease;
+        margin-bottom: 1rem;
+      }
+
+      .about-image:hover {
+        transform: translateY(-5px);
+      }
+
+      .photo-placeholder {
+        width: 150px;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .image-caption {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 0.5rem;
       }
 
       .about-text {
         font-size: 1.1rem;
-        line-height: 1.8;
+        line-height: 1.9;
+        padding-left: 1rem;
+      }
+
+      .about-paragraph {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(102, 126, 234, 0.02);
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+      }
+
+      .about-paragraph:hover {
+        background: rgba(102, 126, 234, 0.05);
+        transform: translateX(5px);
+      }
+
+      .about-paragraph:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-break {
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #667eea,
+          transparent
+        );
+        margin: 2.5rem 0;
+        opacity: 0.3;
       }
 
       .highlight {
         color: #667eea;
         font-weight: 600;
+        padding: 2px 4px;
+        background: rgba(102, 126, 234, 0.1);
+        border-radius: 4px;
+      }
+
+      .credentials-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin: 0.2rem 0.3rem 0.2rem 0;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
       }
 
       /* Services Section */
@@ -435,7 +513,16 @@
 
         .about-content {
           grid-template-columns: 1fr;
-          gap: 2rem;
+          gap: 3rem;
+          text-align: center;
+        }
+
+        .about-text {
+          padding-left: 0;
+        }
+
+        .about-paragraph {
+          text-align: left;
         }
 
         .section-title {
@@ -476,42 +563,68 @@
         <div class="container">
           <h2 class="section-title">About Me</h2>
           <div class="about-content">
-            <div class="about-image">
-              <div>
-                <h3>Professional Educator & Counselor</h3>
-                <p>
-                  Bridging urban-rural education gaps through value-based
-                  learning
-                </p>
+            <div class="about-image-container">
+              <div class="about-image">
+                <div>
+                  <div class="photo-placeholder">👩‍💼</div>
+                  <h3>Anita Jain</h3>
+                  <p>Professional Educator & Counselor</p>
+                  <div class="section-break"></div>
+                  <p>
+                    Bridging urban-rural education gaps through value-based
+                    learning
+                  </p>
+                </div>
               </div>
+              <p class="image-caption">
+                Professional Life Skills Trainer & Certified Counselor
+              </p>
             </div>
             <div class="about-text">
-              <p>
+              <div class="about-paragraph">
+                <strong>Educational Background & Professional Focus</strong>
+                <br /><br />
                 I am a
                 <span class="highlight"
                   >finance graduate with a diploma in counseling skills</span
                 >, working as a freelance life skills trainer. I hold
                 certifications in child and adolescent behavior and serve as a
-                professional counselor.
-              </p>
+                professional counselor. <br /><br />
+                <span class="credentials-badge">Finance Graduate</span>
+                <span class="credentials-badge">Counseling Diploma</span>
+                <span class="credentials-badge"
+                  >Child & Adolescent Certified</span
+                >
+              </div>
 
-              <p>
+              <div class="about-paragraph">
+                <strong>Professional Experience & Expertise</strong>
+                <br /><br />
                 For nearly a decade, I have worked as a trainer in the
                 <span class="highlight"
                   >NIE (Newspaper in Education) division of The Times
                   Group</span
                 >, where I have conducted over 300 workshops to date. My
                 specialization includes Indian traditional games and designing
-                theme-based educational activities.
-              </p>
+                theme-based educational activities. <br /><br />
+                <em>Key Specializations:</em>
+                <br />• Indian Traditional Games Integration <br />• Theme-based
+                Educational Activities <br />• Interactive Workshop Design
+                <br />• Educational Content Development
+              </div>
 
-              <p>
+              <div class="about-paragraph">
+                <strong>Social Impact & Community Service</strong>
+                <br /><br />
                 I actively engage in volunteer work with various social service
                 organizations and am currently working with
                 <span class="highlight">FTS Ekal Abhiyan</span> to bridge the
                 educational gap between urban and rural communities through
-                free, value-based education programs.
-              </p>
+                free, value-based education programs. <br /><br />
+                <em>Mission:</em> Empowering communities through accessible,
+                value-driven education that connects traditional wisdom with
+                modern learning approaches.
+              </div>
             </div>
           </div>
         </div>

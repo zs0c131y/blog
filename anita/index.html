@@ -236,6 +236,16 @@
         transform: translateY(-5px);
       }
 
+      /* Fixed Profile Container */
+      .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
       .photo-placeholder {
         width: 150px;
         height: 150px;
@@ -248,6 +258,46 @@
         border: 3px solid rgba(255, 255, 255, 0.3);
         font-size: 3rem;
         color: rgba(255, 255, 255, 0.8);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Fixed Image Styling */
+      .photo-placeholder img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        z-index: 2;
+      }
+
+      /* Hide emoji when image is present */
+      .photo-placeholder:has(img) {
+        font-size: 0;
+      }
+
+      .profile-container h3 {
+        margin: 0.5rem 0;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .profile-container p {
+        margin: 0.3rem 0;
+        font-size: 1rem;
+        opacity: 0.9;
+        text-align: center;
+      }
+
+      .profile-container .section-break {
+        width: 80px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.5);
+        margin: 1rem auto;
+        border-radius: 1px;
       }
 
       .image-caption {
@@ -279,18 +329,6 @@
 
       .about-paragraph:last-child {
         margin-bottom: 0;
-      }
-
-      .section-break {
-        height: 1px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          #667eea,
-          transparent
-        );
-        margin: 2.5rem 0;
-        opacity: 0.3;
       }
 
       .highlight {
@@ -528,6 +566,12 @@
         .section-title {
           font-size: 2rem;
         }
+
+        .photo-placeholder {
+          width: 120px;
+          height: 120px;
+          font-size: 2.5rem;
+        }
       }
     </style>
   </head>
@@ -565,8 +609,11 @@
           <div class="about-content">
             <div class="about-image-container">
               <div class="about-image">
-                <div>
-                  <div class="photo-placeholder">👩‍💼</div>
+                <div class="profile-container">
+                  <div class="photo-placeholder">
+                    👩
+                    <img src="profile.jpeg" alt="Anita Jain Profile" />
+                  </div>
                   <h3>Anita Jain</h3>
                   <p>Professional Educator & Counselor</p>
                   <div class="section-break"></div>

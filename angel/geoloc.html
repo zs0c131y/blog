@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pawtner Hope | Homepage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Hide scrollbar for all elements */
+      html,
+      body {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow-x: hidden;
+        font-family: sans-serif;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #374151;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 20;
+      }
+
+      .header-container {
+        max-width: 64rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .paw-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: #8a9a5b;
+      }
+
+      .site-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #8a9a5b;
+      }
+
+      /* Main Content */
+      main {
+        flex-grow: 1;
+        padding: 2.5rem 1rem;
+        background-color: #fefae0;
+        position: relative;
+        z-index: 10;
+        color: #374151;
+      }
+
+      .content-spacing {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+      }
+
+      /* About Section */
+      .about-section {
+        max-width: 64rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .about-spacing {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.875rem;
+        font-weight: bold;
+        color: #8a9a5b;
+        text-transform: uppercase;
+      }
+
+      .about-text {
+        font-size: 1.125rem;
+        line-height: 1.75;
+      }
+
+      /* Mission Cards */
+      .mission-section {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .mission-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .mission-card {
+        background-color: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .mission-card:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #8a9a5b;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Gallery Section */
+      .gallery-section {
+        max-width: 80rem;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .gallery-spacing {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .gallery-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #8a9a5b;
+        text-transform: uppercase;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .gallery-image {
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        width: 100%;
+        height: auto;
+      }
+
+      .gallery-image:hover {
+        transform: scale(1.05);
+      }
+
+      /* Geolocation Section */
+      .geolocation-section {
+        max-width: 64rem;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0.5rem 0 1rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+
+      .geo-spacing {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .geo-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #8a9a5b;
+      }
+
+      .error-text {
+        color: #dc2626;
+        font-size: 0.875rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #d9c3a9;
+        color: #374151;
+        padding: 1.5rem 0;
+        text-align: center;
+        font-size: 0.875rem;
+        position: relative;
+        z-index: 10;
+      }
+
+      .footer-container {
+        max-width: 64rem;
+        margin: 0 auto;
+      }
+
+      .footer-spacing {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .footer-main {
+        font-weight: 600;
+      }
+
+      .footer-links a {
+        color: #8a9a5b;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        max-width: 90%;
+        width: 400px;
+        position: relative;
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #8a9a5b;
+      }
+
+      .close-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+      }
+
+      .close-button:hover {
+        background-color: #f3f4f6;
+      }
+
+      .modal-body {
+        color: #374151;
+      }
+
+      .location-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .location-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+        background-color: #f9fafb;
+        border-radius: 0.375rem;
+      }
+
+      .location-label {
+        font-weight: 600;
+        color: #8a9a5b;
+      }
+
+      .location-value {
+        color: #374151;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 640px) {
+        .header-container {
+          padding: 0 1rem;
+        }
+
+        .site-title {
+          font-size: 1rem;
+        }
+
+        main {
+          padding: 2rem 1rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .about-text {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <!-- Paw Icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="paw-icon"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M320 96c-44.1 0-80 57.3-80 128s35.9 128 80 128 80-57.3 80-128-35.9-128-80-128zm384 0c-44.1 0-80 57.3-80 128s35.9 128 80 128 80-57.3 80-128-35.9-128-80-128zM192 416c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm640 0c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zM512 480c-105.9 0-192 106.1-192 208 0 51.7 38.1 112 96 112 38.6 0 64-19.8 96-19.8S561.4 800 600 800c57.9 0 96-60.3 96-112 0-101.9-86.1-208-192-208z"
+          />
+        </svg>
+        <h1 class="site-title">Pawtner Hope Foundation</h1>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="content-spacing">
+        <!-- About Section -->
+        <section class="about-section">
+          <div class="about-spacing">
+            <h2 class="section-title">About Us</h2>
+            <p class="about-text">
+              Pawtner Hope Foundation is dedicated to rescuing, rehabilitating,
+              and rehoming stray animals with love and dignity. We strive to
+              create a compassionate community where every paw matters.
+            </p>
+          </div>
+        </section>
+
+        <!-- Mission Cards -->
+        <section class="mission-section">
+          <div class="mission-grid">
+            <div class="mission-card">
+              <h3 class="card-title">Rescue</h3>
+              <p>
+                We actively rescue injured, abandoned, and vulnerable animals
+                from the streets.
+              </p>
+            </div>
+            <div class="mission-card">
+              <h3 class="card-title">Rehabilitation</h3>
+              <p>
+                With care, treatment and nutrition, we ensure every animal gets
+                a second chance at life.
+              </p>
+            </div>
+            <div class="mission-card">
+              <h3 class="card-title">Adoption</h3>
+              <p>
+                We match our furry friends with forever homes through safe,
+                ethical adoption programs.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Photo Highlights -->
+        <section class="gallery-section">
+          <div class="gallery-spacing">
+            <h2 class="gallery-title">Gallery Highlights</h2>
+            <div class="gallery-grid">
+              <img src="pupp.jpeg" alt="rescued pup" class="gallery-image" />
+              <img src="catt.jpeg" alt="adopted cat" class="gallery-image" />
+              <img
+                src="volunteer.jpeg"
+                alt="volunteer team"
+                class="gallery-image"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Geolocation Info (Hidden, just for error display) -->
+    <section class="geolocation-section">
+      <div class="geo-spacing">
+        <h2 class="geo-title">Location Services</h2>
+        <p class="error-text" id="error" style="display: none"></p>
+      </div>
+    </section>
+
+    <!-- Location Modal -->
+    <div id="locationModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Your Location Information</h3>
+          <button class="close-button" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="location-info">
+            <div class="location-item">
+              <span class="location-label">Latitude:</span>
+              <span class="location-value" id="lat">-</span>
+            </div>
+            <div class="location-item">
+              <span class="location-label">Longitude:</span>
+              <span class="location-value" id="long">-</span>
+            </div>
+            <div class="location-item">
+              <span class="location-label">Timestamp:</span>
+              <span class="location-value" id="time">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-spacing">
+          <p class="footer-main">
+            © 2025 Pawtner Hope Foundation. All rights reserved.
+          </p>
+          <p class="footer-links">
+            Made with 💛 for paws |
+            <a href="#">Privacy Policy</a> ·
+            <a href="#">Contact Us</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Modal functionality
+      const modal = document.getElementById("locationModal");
+      const closeButton = document.getElementById("closeModal");
+      const errorElement = document.getElementById("error");
+
+      // Close modal function
+      function closeModal() {
+        modal.classList.remove("show");
+      }
+
+      // Show modal function
+      function showModal() {
+        modal.classList.add("show");
+      }
+
+      // Close modal on button click
+      closeButton.addEventListener("click", closeModal);
+
+      // Close modal when clicking outside
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close modal on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("show")) {
+          closeModal();
+        }
+      });
+
+      // Geolocation functionality
+      window.onload = function () {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+          showError({ code: "GEOLOCATION_NOT_SUPPORTED" });
+        }
+      };
+
+      function showPosition(position) {
+        // Update modal content
+        document.getElementById("lat").innerText =
+          position.coords.latitude.toFixed(6);
+        document.getElementById("long").innerText =
+          position.coords.longitude.toFixed(6);
+        document.getElementById("time").innerText = new Date(
+          position.timestamp
+        ).toLocaleString();
+
+        // Show the modal
+        showModal();
+      }
+
+      function showError(error) {
+        let msg = "";
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            msg = "User denied the request for Geolocation.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            msg = "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            msg = "The request to get user location timed out.";
+            break;
+          case error.UNKNOWN_ERROR:
+            msg = "An unknown error occurred.";
+            break;
+          case "GEOLOCATION_NOT_SUPPORTED":
+            msg = "Geolocation is not supported by this browser.";
+            break;
+          default:
+            msg = "An unknown error occurred.";
+        }
+
+        // Show error in the page
+        errorElement.innerText = msg;
+        errorElement.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

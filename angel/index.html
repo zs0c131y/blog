@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pawtner Hope | Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #dbeafe;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow-x: hidden;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: #374151;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 20;
+      }
+
+      .header-container {
+        max-width: 64rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .paw-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: #8a9a5b;
+      }
+
+      .site-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #8a9a5b;
+      }
+
+      /* Background Video */
+      .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .video-background video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Main Content */
+      main {
+        flex-grow: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 1.75rem;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 10;
+      }
+
+      .login-container {
+        max-width: 24rem;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+      }
+
+      .login-title {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #758e67;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #d1d5db;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #758e67;
+        box-shadow: 0 0 0 3px rgba(117, 142, 103, 0.1);
+      }
+
+      .login-button {
+        width: 100%;
+        background-color: #758e67;
+        color: white;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .login-button:hover {
+        background-color: #5f7353;
+      }
+
+      .signup-text {
+        text-align: center;
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin-top: 1.5rem;
+      }
+
+      .signup-link {
+        color: #758e67;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .signup-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Error message styles */
+      .error-message {
+        color: #dc2626;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      .form-input.error {
+        border-color: #dc2626;
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: #d2b48c; /* Sand color */
+        color: #8b4513; /* Darker brown for contrast */
+        padding: 1rem 0;
+        text-align: center;
+        font-size: 0.875rem;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .footer-content {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 640px) {
+        .header-container {
+          padding: 0 1rem;
+        }
+
+        .site-title {
+          font-size: 1rem;
+        }
+
+        .login-container {
+          margin: 0 1rem;
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <!-- Paw Icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="paw-icon"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            d="M320 96c-44.1 0-80 57.3-80 128s35.9 128 80 128 80-57.3 80-128-35.9-128-80-128zm384 0c-44.1 0-80 57.3-80 128s35.9 128 80 128 80-57.3 80-128-35.9-128-80-128zM192 416c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zm640 0c-61.9 0-112 50.1-112 112s50.1 112 112 112 112-50.1 112-112-50.1-112-112-112zM512 480c-105.9 0-192 106.1-192 208 0 51.7 38.1 112 96 112 38.6 0 64-19.8 96-19.8S561.4 800 600 800c57.9 0 96-60.3 96-112 0-101.9-86.1-208-192-208z"
+          />
+        </svg>
+        <h1 class="site-title">Pawtner Hope Foundation</h1>
+      </div>
+    </header>
+
+    <!-- Background Video -->
+    <div class="video-background">
+      <video autoplay muted loop>
+        <source src="video/ngoo_animation.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Main Login Form -->
+    <main>
+      <div class="login-container">
+        <h2 class="login-title">Login</h2>
+
+        <form class="login-form" id="loginForm">
+          <div>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              class="form-input"
+              required
+            />
+            <div class="error-message" id="emailError">
+              Please enter a valid email address
+            </div>
+          </div>
+
+          <div>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              class="form-input"
+              required
+              minlength="6"
+            />
+            <div class="error-message" id="passwordError">
+              Password must be at least 6 characters long
+            </div>
+          </div>
+
+          <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <p class="signup-text">
+          Don't have an account?
+          <a href="#" class="signup-link">Sign up</a>
+        </p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <!-- <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Pawtner Hope Foundation. All rights reserved.</p>
+        <p>Connecting hearts, saving paws 🐾</p>
+      </div>
+    </footer> -->
+
+    <script>
+      // Form validation and storage functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("loginForm");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+
+        // Email validation function
+        function validateEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(email);
+        }
+
+        // Show error message
+        function showError(input, errorElement, message) {
+          input.classList.add("error");
+          errorElement.textContent = message;
+          errorElement.classList.add("show");
+        }
+
+        // Hide error message
+        function hideError(input, errorElement) {
+          input.classList.remove("error");
+          errorElement.classList.remove("show");
+        }
+
+        // Real-time validation
+        emailInput.addEventListener("input", function () {
+          if (this.value && !validateEmail(this.value)) {
+            showError(this, emailError, "Please enter a valid email address");
+          } else {
+            hideError(this, emailError);
+          }
+        });
+
+        passwordInput.addEventListener("input", function () {
+          if (this.value && this.value.length < 6) {
+            showError(
+              this,
+              passwordError,
+              "Password must be at least 6 characters long"
+            );
+          } else {
+            hideError(this, passwordError);
+          }
+        });
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          let isValid = true;
+
+          // Validate email
+          if (!emailInput.value) {
+            showError(emailInput, emailError, "Email is required");
+            isValid = false;
+          } else if (!validateEmail(emailInput.value)) {
+            showError(
+              emailInput,
+              emailError,
+              "Please enter a valid email address"
+            );
+            isValid = false;
+          } else {
+            hideError(emailInput, emailError);
+          }
+
+          // Validate password
+          if (!passwordInput.value) {
+            showError(passwordInput, passwordError, "Password is required");
+            isValid = false;
+          } else if (passwordInput.value.length < 6) {
+            showError(
+              passwordInput,
+              passwordError,
+              "Password must be at least 6 characters long"
+            );
+            isValid = false;
+          } else {
+            hideError(passwordInput, passwordError);
+          }
+
+          // If validation passes, store data and simulate login
+          if (isValid) {
+            // Store email in sessionStorage
+            sessionStorage.setItem("userEmail", emailInput.value);
+
+            // Store login timestamp in localStorage
+            const loginTimestamp = new Date().toISOString();
+            localStorage.setItem("lastLoginTimestamp", loginTimestamp);
+
+            // Show success message (you can replace this with actual login logic)
+            alert(
+              "Login successful! Email stored in session, timestamp saved."
+            );
+
+            // Optional: Clear form
+            form.reset();
+
+            // You can redirect to another page here
+            window.location.href = "page2.html";
+          }
+        });
+
+        // Load saved email on page load (optional feature)
+        const savedEmail = sessionStorage.getItem("userEmail");
+        if (savedEmail) {
+          emailInput.value = savedEmail;
+        }
+
+        // Display last login info (optional feature)
+        const lastLogin = localStorage.getItem("lastLoginTimestamp");
+        if (lastLogin) {
+          console.log("Last login:", new Date(lastLogin).toLocaleString());
+        }
+      });
+    </script>
+  </body>
+</html>

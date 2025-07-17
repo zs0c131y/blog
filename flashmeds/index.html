@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlashMeds - 24/7 Medicine Delivery in Purnia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0066cc",
+              secondary: "#00a86b",
+              accent: "#ff6b6b",
+              medical: "#e3f2fd",
+              darkblue: "#003d82",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui"],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .glassmorphism {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .medical-gradient {
+        background: linear-gradient(135deg, #0066cc 0%, #00a86b 100%);
+      }
+      .card-shadow {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      .pulse-ring {
+        animation: pulse-ring 2s infinite;
+      }
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0;
+        }
+      }
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav
+      class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+              <div
+                class="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-heartbeat text-white text-lg"></i>
+              </div>
+              <span class="text-2xl font-bold text-gray-900">FlashMeds</span>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a
+                href="#home"
+                class="text-gray-700 hover:text-primary transition duration-300 font-medium"
+                >Home</a
+              >
+              <a
+                href="#how-it-works"
+                class="text-gray-700 hover:text-primary transition duration-300 font-medium"
+                >How it Works</a
+              >
+              <a
+                href="#features"
+                class="text-gray-700 hover:text-primary transition duration-300 font-medium"
+                >Features</a
+              >
+              <a
+                href="#coverage"
+                class="text-gray-700 hover:text-primary transition duration-300 font-medium"
+                >Coverage</a
+              >
+              <a
+                href="#about"
+                class="text-gray-700 hover:text-primary transition duration-300 font-medium"
+                >About</a
+              >
+              <a
+                href="#contact"
+                class="text-gray-700 hover:text-primary transition duration-300 font-medium"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-btn"
+              class="text-gray-700 hover:text-primary p-2 rounded-xl"
+            >
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100"
+      >
+        <div class="px-4 pt-2 pb-3 space-y-1">
+          <a
+            href="#home"
+            class="block px-4 py-3 text-gray-700 hover:text-primary font-medium rounded-xl"
+            >Home</a
+          >
+          <a
+            href="#how-it-works"
+            class="block px-4 py-3 text-gray-700 hover:text-primary font-medium rounded-xl"
+            >How it Works</a
+          >
+          <a
+            href="#features"
+            class="block px-4 py-3 text-gray-700 hover:text-primary font-medium rounded-xl"
+            >Features</a
+          >
+          <a
+            href="#coverage"
+            class="block px-4 py-3 text-gray-700 hover:text-primary font-medium rounded-xl"
+            >Coverage</a
+          >
+          <a
+            href="#about"
+            class="block px-4 py-3 text-gray-700 hover:text-primary font-medium rounded-xl"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="block px-4 py-3 text-gray-700 hover:text-primary font-medium rounded-xl"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="medical-gradient min-h-screen flex items-center relative overflow-hidden py-20"
+    >
+      <!-- Background Elements -->
+      <div class="absolute inset-0 opacity-10">
+        <div
+          class="absolute top-20 left-20 w-20 h-20 bg-white rounded-full pulse-ring"
+        ></div>
+        <div
+          class="absolute top-60 right-40 w-16 h-16 bg-white rounded-full pulse-ring"
+          style="animation-delay: 1s"
+        ></div>
+        <div
+          class="absolute bottom-40 left-40 w-12 h-12 bg-white rounded-full pulse-ring"
+          style="animation-delay: 2s"
+        ></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="text-white">
+            <div
+              class="inline-flex items-center bg-white/20 rounded-full px-4 py-2 mb-6"
+            >
+              <i class="fas fa-shield-alt text-green-300 mr-2"></i>
+              <span class="text-sm font-medium">100% Authentic Medicines</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Your Health, Our
+              <span class="block text-yellow-300">Priority</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed">
+              24/7 medicine delivery in Purnia. Get your medications delivered
+              to your doorstep within 30 minutes.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+              <a
+                href="https://wa.me/+919999999999?text=Hi%20FlashMeds,%20I%20need%20medicine%20delivery"
+                class="bg-secondary hover:bg-green-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold flex items-center justify-center transition duration-300 shadow-lg hover:shadow-xl"
+              >
+                <i class="fab fa-whatsapp mr-3 text-xl"></i>
+                Order on WhatsApp
+              </a>
+              <a
+                href="#how-it-works"
+                class="glassmorphism text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white/20 transition duration-300"
+              >
+                How it Works
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-6">
+              <div class="flex items-center text-blue-100">
+                <div
+                  class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3"
+                >
+                  <i class="fas fa-clock text-sm"></i>
+                </div>
+                <span class="font-medium">24/7 Available</span>
+              </div>
+              <div class="flex items-center text-blue-100">
+                <div
+                  class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3"
+                >
+                  <i class="fas fa-shipping-fast text-sm"></i>
+                </div>
+                <span class="font-medium">30min Delivery</span>
+              </div>
+              <div class="flex items-center text-blue-100">
+                <div
+                  class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3"
+                >
+                  <i class="fas fa-certificate text-sm"></i>
+                </div>
+                <span class="font-medium">Licensed Pharmacy</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div
+                class="w-96 h-96 bg-white/10 rounded-3xl flex items-center justify-center backdrop-blur-sm floating"
+              >
+                <div
+                  class="w-80 h-80 bg-white/20 rounded-3xl flex items-center justify-center"
+                >
+                  <i class="fas fa-pills text-8xl text-white"></i>
+                </div>
+              </div>
+              <div
+                class="absolute -top-6 -right-6 w-20 h-20 bg-yellow-400 rounded-3xl flex items-center justify-center shadow-xl"
+              >
+                <i class="fas fa-heart text-2xl text-white"></i>
+              </div>
+              <div
+                class="absolute -bottom-6 -left-6 w-16 h-16 bg-secondary rounded-3xl flex items-center justify-center shadow-xl"
+              >
+                <i class="fas fa-user-md text-xl text-white"></i>
+              </div>
+              <div
+                class="absolute top-20 -left-8 w-12 h-12 bg-accent rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-plus text-white"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 bg-white pb-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <div
+            class="inline-flex items-center bg-medical rounded-full px-4 py-2 mb-6"
+          >
+            <i class="fas fa-cogs text-primary mr-2"></i>
+            <span class="text-primary font-medium">Simple Process</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            How FlashMeds Works
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Get your medicines delivered in 4 simple steps
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="bg-gray-50 p-8 rounded-3xl text-center card-hover">
+            <div class="relative mb-8">
+              <div
+                class="w-24 h-24 bg-primary rounded-3xl flex items-center justify-center mx-auto shadow-xl"
+              >
+                <i class="fas fa-mobile-alt text-3xl text-white"></i>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold text-sm"
+              >
+                1
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">Contact Us</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Send us a message on WhatsApp with your medicine requirements
+            </p>
+          </div>
+          <div class="bg-gray-50 p-8 rounded-3xl text-center card-hover">
+            <div class="relative mb-8">
+              <div
+                class="w-24 h-24 bg-secondary rounded-3xl flex items-center justify-center mx-auto shadow-xl"
+              >
+                <i
+                  class="fas fa-prescription-bottle-alt text-3xl text-white"
+                ></i>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold text-sm"
+              >
+                2
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">
+              Share Prescription
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Upload your prescription image or share your medicine list
+            </p>
+          </div>
+          <div class="bg-gray-50 p-8 rounded-3xl text-center card-hover">
+            <div class="relative mb-8">
+              <div
+                class="w-24 h-24 bg-accent rounded-3xl flex items-center justify-center mx-auto shadow-xl"
+              >
+                <i class="fas fa-credit-card text-3xl text-white"></i>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold text-sm"
+              >
+                3
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">Confirm Order</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Review your order and choose payment method (COD or UPI)
+            </p>
+          </div>
+          <div class="bg-gray-50 p-8 rounded-3xl text-center card-hover">
+            <div class="relative mb-8">
+              <div
+                class="w-24 h-24 bg-purple-500 rounded-3xl flex items-center justify-center mx-auto shadow-xl"
+              >
+                <i class="fas fa-shipping-fast text-3xl text-white"></i>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-white font-bold text-sm"
+              >
+                4
+              </div>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">Fast Delivery</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Get your medicines delivered within 30 minutes
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <div
+            class="inline-flex items-center bg-white rounded-full px-4 py-2 mb-6"
+          >
+            <i class="fas fa-star text-yellow-500 mr-2"></i>
+            <span class="text-gray-700 font-medium">Why Choose Us</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Premium Features
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Experience healthcare like never before with our advanced features
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-3xl shadow-lg card-hover border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-clock text-2xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">
+              24/7 Availability
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Emergency medicine delivery anytime, day or night. We're always
+              here when you need us most.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-3xl shadow-lg card-hover border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-search text-2xl text-secondary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">
+              Easy Medicine Search
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Find any medicine quickly with our comprehensive database and
+              intelligent search system.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-3xl shadow-lg card-hover border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-image text-2xl text-accent"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">
+              Prescription Upload
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Simply upload your prescription image or PDF - we'll handle the
+              rest for you.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-3xl shadow-lg card-hover border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-money-bill-wave text-2xl text-purple-500"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">
+              Flexible Payment
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Choose between Cash on Delivery (COD) or secure UPI payment
+              options.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-3xl shadow-lg card-hover border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-comments text-2xl text-green-500"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">
+              WhatsApp Support
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              Get instant help and support through our dedicated WhatsApp
+              service.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-3xl shadow-lg card-hover border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-shield-alt text-2xl text-blue-500"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-gray-900">100% Authentic</h3>
+            <p class="text-gray-600 leading-relaxed">
+              All medicines are sourced from licensed pharmacies and verified
+              for authenticity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coverage Area Section -->
+    <section id="coverage" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <div
+            class="inline-flex items-center bg-medical rounded-full px-4 py-2 mb-6"
+          >
+            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+            <span class="text-primary font-medium">Service Area</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Coverage Area
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Currently serving Purnia, Bihar
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <div class="medical-gradient p-10 rounded-3xl text-white shadow-xl">
+              <h3 class="text-3xl font-bold mb-8">
+                Now Available in Purnia, Bihar
+              </h3>
+              <div class="space-y-6">
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-map-marker-alt text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-lg font-semibold">Purnia</div>
+                    <div class="text-blue-100">Complete city coverage</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-clock text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-lg font-semibold">24/7 Service</div>
+                    <div class="text-blue-100">Always available</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-shipping-fast text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-lg font-semibold">30 min Delivery</div>
+                    <div class="text-blue-100">Faster than your pizza</div>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-users text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-lg font-semibold">1,000+ Customers</div>
+                    <div class="text-blue-100">Trusted by thousands</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="mt-8 bg-gray-50 p-8 rounded-3xl">
+              <h4 class="text-xl font-bold mb-6 text-gray-900">
+                Expanding Soon To:
+              </h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-circle text-secondary text-xs"></i>
+                  </div>
+                  <span class="text-gray-700">Katihar</span>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-circle text-secondary text-xs"></i>
+                  </div>
+                  <span class="text-gray-700">Araria</span>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-circle text-secondary text-xs"></i>
+                  </div>
+                  <span class="text-gray-700">Kishanganj</span>
+                </div>
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-circle text-secondary text-xs"></i>
+                  </div>
+                  <span class="text-gray-700">Supaul</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="flex justify-center">
+            <div class="relative">
+              <div
+                class="w-80 h-80 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full flex items-center justify-center floating"
+              >
+                <div
+                  class="w-64 h-64 bg-primary/20 rounded-full flex items-center justify-center"
+                >
+                  <div
+                    class="w-48 h-48 bg-primary/30 rounded-full flex items-center justify-center"
+                  >
+                    <div
+                      class="w-32 h-32 bg-primary rounded-full flex items-center justify-center"
+                    >
+                      <i class="fas fa-map-marked-alt text-4xl text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="absolute top-16 right-16 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg pulse-ring"
+              >
+                <i class="fas fa-heart text-white"></i>
+              </div>
+              <div
+                class="absolute bottom-16 left-16 w-12 h-12 bg-secondary rounded-full flex items-center justify-center shadow-lg pulse-ring"
+                style="animation-delay: 1s"
+              >
+                <i class="fas fa-plus text-white"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <div
+            class="inline-flex items-center bg-white rounded-full px-4 py-2 mb-6"
+          >
+            <i class="fas fa-info-circle text-primary mr-2"></i>
+            <span class="text-gray-700 font-medium">Our Story</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            About FlashMeds
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Revolutionizing healthcare accessibility in Bihar
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-6 mt-1"
+              >
+                <i class="fas fa-heart text-primary"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">
+                  Our Mission
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  To make healthcare accessible to everyone in Purnia by
+                  providing 24/7 medicine delivery service, ensuring no one has
+                  to compromise on their health due to unavailability of
+                  medicines.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-secondary/10 rounded-3xl flex items-center justify-center mr-6 mt-1"
+              >
+                <i class="fas fa-eye text-secondary"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Our Vision</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  To become the most trusted medicine delivery service in Bihar,
+                  expanding our reach to serve every corner of the state with
+                  reliable, fast, and affordable healthcare solutions.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div
+                class="w-12 h-12 bg-accent/10 rounded-3xl flex items-center justify-center mr-6 mt-1"
+              >
+                <i class="fas fa-handshake text-accent"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-3 text-gray-900">Our Values</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Trust, reliability, and customer satisfaction are at the core
+                  of everything we do. We believe healthcare should be
+                  accessible, affordable, and available when you need it most.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-10 rounded-3xl shadow-xl">
+            <div class="text-center mb-8">
+              <div
+                class="w-20 h-20 medical-gradient rounded-3xl flex items-center justify-center mx-auto mb-6"
+              >
+                <i class="fas fa-users text-2xl text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">Why We Started</h3>
+            </div>
+            <p class="text-gray-600 text-center mb-8 leading-relaxed">
+              FlashMeds was born from a real need we witnessed in Purnia -
+              people struggling to find medicines during emergencies, especially
+              during late hours. Our founders experienced this challenge
+              firsthand and decided to create a solution.
+            </p>
+            <div class="bg-gray-50 p-6 rounded-2xl">
+              <div class="flex items-center justify-center space-x-8">
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-primary">24/7</div>
+                  <div class="text-sm text-gray-600">Available</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-secondary">1K+</div>
+                  <div class="text-sm text-gray-600">Customers</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-3xl font-bold text-accent">30 min</div>
+                  <div class="text-sm text-gray-600">Delivery</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Coming Soon App Section -->
+    <section class="py-24 medical-gradient">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          class="inline-flex items-center bg-white/20 rounded-full px-4 py-2 mb-6"
+        >
+          <i class="fas fa-mobile-alt text-white mr-2"></i>
+          <span class="text-white font-medium">Coming Soon</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+          Mobile App Launching Soon!
+        </h2>
+        <p
+          class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          Get ready for an even better experience with our upcoming mobile app.
+          Order medicines with just a few taps!
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
+        >
+          <div
+            class="bg-white/10 p-6 rounded-3xl backdrop-blur-md border border-white/20"
+          >
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center"
+              >
+                <i class="fab fa-android text-3xl text-white"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-white font-bold text-lg">Android App</div>
+                <div class="text-blue-100">Available Soon</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white/10 p-6 rounded-3xl backdrop-blur-md border border-white/20"
+          >
+            <div class="flex items-center space-x-4">
+              <div
+                class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center"
+              >
+                <i class="fab fa-apple text-3xl text-white"></i>
+              </div>
+              <div class="text-left">
+                <div class="text-white font-bold text-lg">iOS App</div>
+                <div class="text-blue-100">Coming Soon</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <a
+            href="https://wa.me/+916207991651?text=Hi%20FlashMeds,%20I%20want%20to%20get%20notified%20about%20the%20app%20launch"
+            class="bg-white text-primary px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg"
+          >
+            <i class="fas fa-bell mr-2"></i>
+            Notify Me When App Launches
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20">
+          <div
+            class="inline-flex items-center bg-medical rounded-full px-4 py-2 mb-6"
+          >
+            <i class="fas fa-headset text-primary mr-2"></i>
+            <span class="text-primary font-medium">Get In Touch</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Contact Us
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Need help? Have questions? We're here to assist you 24/7
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div class="space-y-8">
+            <div class="flex items-center space-x-6">
+              <div
+                class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center"
+              >
+                <i class="fas fa-phone text-primary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Call Us</h3>
+                <p class="text-gray-600 text-lg">+91 620-799-1651</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6">
+              <div
+                class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center"
+              >
+                <i class="fas fa-envelope text-secondary text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Email Us</h3>
+                <p class="text-gray-600 text-lg">flashmeds24@gmail.com</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6">
+              <div
+                class="w-16 h-16 bg-pink-500/10 rounded-2xl flex items-center justify-center"
+              >
+                <i class="fab fa-instagram text-pink-500 text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Follow Us</h3>
+                <p class="text-gray-600 text-lg">@flashmeds.in</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-6">
+              <div
+                class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center"
+              >
+                <i class="fas fa-map-marker-alt text-accent text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900">Visit Us</h3>
+                <p class="text-gray-600 text-lg">Purnia, Bihar, India</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-10 rounded-3xl">
+            <h3 class="text-2xl font-bold mb-8 text-center text-gray-900">
+              Quick Order
+            </h3>
+            <div class="space-y-6">
+              <div
+                class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
+              >
+                <h4 class="font-bold mb-3 flex items-center text-gray-900">
+                  <div
+                    class="w-8 h-8 bg-red-500/10 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-exclamation text-red-500 text-sm"></i>
+                  </div>
+                  Emergency Medicine
+                </h4>
+                <p class="text-sm text-gray-600 mb-4">
+                  Need medicines urgently? Contact us immediately!
+                </p>
+                <a
+                  href="https://wa.me/+91916207991651?text=Hi%20FlashMeds,%20I%20need%20emergency%20medicine%20delivery"
+                  class="bg-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-600 transition duration-300 inline-flex items-center"
+                >
+                  <i class="fas fa-bolt mr-2"></i>
+                  Emergency Order
+                </a>
+              </div>
+              <div
+                class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"
+              >
+                <h4 class="font-bold mb-3 flex items-center text-gray-900">
+                  <div
+                    class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-pills text-primary text-sm"></i>
+                  </div>
+                  Regular Medicine
+                </h4>
+                <p class="text-sm text-gray-600 mb-4">
+                  Order your regular medications with ease
+                </p>
+                <a
+                  href="https://wa.me/+91916207991651?text=Hi%20FlashMeds,%20I%20need%20regular%20medicine%20delivery"
+                  class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition duration-300 inline-flex items-center"
+                >
+                  <i class="fas fa-shopping-cart mr-2"></i>
+                  Regular Order
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div class="md:col-span-2">
+            <div class="flex items-center mb-6">
+              <div
+                class="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center mr-3"
+              >
+                <i class="fas fa-heartbeat text-white text-xl"></i>
+              </div>
+              <span class="text-2xl font-bold">FlashMeds</span>
+            </div>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              Your trusted partner for 24/7 medicine delivery in Purnia. We're
+              committed to making healthcare accessible to everyone.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://instagram.com/flashmeds.in"
+                class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center hover:bg-primary transition duration-300"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://wa.me/+916207991651/?text=Hello%20FlashMeds"
+                class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center hover:bg-primary transition duration-300"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a
+                href="tel:+916207991651"
+                class="w-12 h-12 bg-gray-800 rounded-2xl flex items-center justify-center hover:bg-primary transition duration-300"
+              >
+                <i class="fas fa-phone"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#how-it-works"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >How it Works</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#features"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Features</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#coverage"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Coverage</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >About</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-6">Services</h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Emergency Delivery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Regular Medicine</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >Prescription Upload</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >24/7 Support</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition duration-300"
+                  >COD Payment</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+            © 2025 FlashMeds. All rights reserved.
+          </p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition duration-300"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition duration-300"
+              >Terms of Service</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition duration-300"
+              >Refund Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+      document
+        .getElementById("mobile-menu-btn")
+        .addEventListener("click", function () {
+          const mobileMenu = document.getElementById("mobile-menu");
+          mobileMenu.classList.toggle("hidden");
+        });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+          // Close mobile menu if open
+          document.getElementById("mobile-menu").classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>

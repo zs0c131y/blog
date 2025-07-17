@@ -222,7 +222,7 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 mb-8">
               <a
-                href="https://wa.me/+919999999999?text=Hi%20FlashMeds,%20I%20need%20medicine%20delivery"
+                href="https://wa.me/+916207991651?text=Hi%20FlashMeds,%20I%20need%20medicine%20delivery"
                 class="bg-secondary hover:bg-green-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold flex items-center justify-center transition duration-300 shadow-lg hover:shadow-xl"
               >
                 <i class="fab fa-whatsapp mr-3 text-xl"></i>
@@ -262,7 +262,7 @@
               </div>
             </div>
           </div>
-          <div class="flex justify-center">
+          <div class="hidden lg:flex justify-center">
             <div class="relative">
               <div
                 class="w-96 h-96 bg-white/10 rounded-3xl flex items-center justify-center backdrop-blur-sm floating"
@@ -618,7 +618,7 @@
               </div>
             </div> -->
           </div>
-          <div class="flex justify-center">
+          <div class="hidden lg:flex justify-center">
             <div class="relative">
               <div
                 class="w-80 h-80 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full flex items-center justify-center floating"
@@ -675,7 +675,8 @@
           <div class="space-y-8">
             <div class="flex items-start">
               <div
-                class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-6 mt-1"
+                class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-6 mt-1 flex-shrink-0"
+                style="border-radius: 50%"
               >
                 <i class="fas fa-heart text-primary"></i>
               </div>
@@ -693,7 +694,8 @@
             </div>
             <div class="flex items-start">
               <div
-                class="w-12 h-12 bg-secondary/10 rounded-3xl flex items-center justify-center mr-6 mt-1"
+                class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-6 mt-1 flex-shrink-0"
+                style="border-radius: 50%"
               >
                 <i class="fas fa-eye text-secondary"></i>
               </div>
@@ -708,7 +710,8 @@
             </div>
             <div class="flex items-start">
               <div
-                class="w-12 h-12 bg-accent/10 rounded-3xl flex items-center justify-center mr-6 mt-1"
+                class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-6 mt-1 flex-shrink-0"
+                style="border-radius: 50%"
               >
                 <i class="fas fa-handshake text-accent"></i>
               </div>
@@ -906,7 +909,7 @@
                   Need medicines urgently? Contact us immediately!
                 </p>
                 <a
-                  href="https://wa.me/+91916207991651?text=Hi%20FlashMeds,%20I%20need%20emergency%20medicine%20delivery"
+                  href="https://wa.me/+916207991651?text=Hi%20FlashMeds,%20I%20need%20emergency%20medicine%20delivery"
                   class="bg-red-500 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-600 transition duration-300 inline-flex items-center"
                 >
                   <i class="fas fa-bolt mr-2"></i>
@@ -928,7 +931,7 @@
                   Order your regular medications with ease
                 </p>
                 <a
-                  href="https://wa.me/+91916207991651?text=Hi%20FlashMeds,%20I%20need%20regular%20medicine%20delivery"
+                  href="https://wa.me/+916207991651?text=Hi%20FlashMeds,%20I%20need%20regular%20medicine%20delivery"
                   class="bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary/90 transition duration-300 inline-flex items-center"
                 >
                   <i class="fas fa-shopping-cart mr-2"></i>
@@ -1089,12 +1092,29 @@
 
     <!-- Mobile Menu Toggle Script -->
     <script>
-      document
-        .getElementById("mobile-menu-btn")
-        .addEventListener("click", function () {
-          const mobileMenu = document.getElementById("mobile-menu");
-          mobileMenu.classList.toggle("hidden");
-        });
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      // Toggle mobile menu
+      mobileMenuBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (e) {
+        if (
+          !mobileMenu.contains(e.target) &&
+          !mobileMenuBtn.contains(e.target)
+        ) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+
+      // Prevent menu from closing when clicking inside it
+      mobileMenu.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
 
       // Smooth scrolling for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1108,7 +1128,7 @@
             });
           }
           // Close mobile menu if open
-          document.getElementById("mobile-menu").classList.add("hidden");
+          mobileMenu.classList.add("hidden");
         });
       });
     </script>

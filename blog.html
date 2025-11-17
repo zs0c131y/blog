@@ -3,61 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog - My Personal Blog</title>
+    <title>Blog - My Blog</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/blog.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="nav-brand">
-        <a href="index.html">My Blog</a>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="blog.html" class="active">Blog</a>
-        <a href="index.html#about">About</a>
-        <a href="dashboard.html" class="dashboard-link">
-          <i class="fas fa-dashboard"></i> Dashboard
-        </a>
-      </div>
-      <div class="mobile-nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">My Blog</a>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html" class="active">Blog</a>
+          <a href="index.html#about">About</a>
+          <a href="login.html">Dashboard</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
+          </button>
+        </div>
+        <button class="mobile-nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
 
-    <!-- Blog Header -->
-    <header class="blog-header">
-      <h1>Blog Posts</h1>
-      <div class="blog-filters">
-        <input type="text" id="searchInput" placeholder="Search posts..." />
-        <select id="categoryFilter">
-          <option value="all">All Categories</option>
-          <option value="technology">Technology</option>
-          <option value="photography">Photography</option>
-          <option value="travel">Travel</option>
-        </select>
-        <select id="timeFilter">
-          <option value="latest">Latest First</option>
-          <option value="oldest">Oldest First</option>
-        </select>
+    <!-- Blog Section -->
+    <section class="blog-section" style="margin-top: 60px; padding-top: 4rem;">
+      <div class="section-header">
+        <h2>All posts</h2>
+        <p>Thoughts, stories and ideas</p>
       </div>
-    </header>
 
-    <!-- Blog Grid -->
-    <section class="blog-listing">
-      <div id="blogGrid" class="blog-grid">
-        <!-- Blog posts will be dynamically loaded here -->
+      <div class="blog-list" id="blogList">
+        <!-- Posts will be loaded dynamically -->
       </div>
     </section>
 
@@ -65,20 +48,24 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Quick Links</h3>
+          <h3>My Blog</h3>
+          <p>Thoughts, stories and ideas.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Links</h3>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="index.html#about">About</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Dashboard</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h3>Connect</h3>
           <div class="social-links">
-            <a href="#" target="_blank">Twitter</a>
-            <a href="#" target="_blank">GitHub</a>
-            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
           </div>
         </div>
       </div>
@@ -88,6 +75,91 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/blog.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+      // Load all blog posts
+      function loadBlogPosts() {
+        const storedPosts = localStorage.getItem('blogPosts');
+        let posts = [];
+
+        if (storedPosts) {
+          posts = JSON.parse(storedPosts);
+        } else {
+          // Default posts
+          posts = [
+            {
+              id: 1,
+              title: "Getting Started with Web Development",
+              category: "technology",
+              date: "2024-04-03",
+              excerpt: "Learn the basics of HTML, CSS, and JavaScript to start your web development journey. A comprehensive guide for beginners looking to build modern websites.",
+              readTime: "5 min read",
+            },
+            {
+              id: 2,
+              title: "The Art of Photography",
+              category: "photography",
+              date: "2024-04-02",
+              excerpt: "Discover essential tips and techniques for capturing stunning photographs that tell a story. From composition to lighting, learn what makes a great photo.",
+              readTime: "7 min read",
+            },
+            {
+              id: 3,
+              title: "Travel Adventures",
+              category: "travel",
+              date: "2024-04-01",
+              excerpt: "Exploring hidden gems and must-visit destinations around the world, one journey at a time. Stories from the road and practical travel tips.",
+              readTime: "6 min read",
+            },
+          ];
+        }
+
+        const container = document.getElementById('blogList');
+
+        // Sort by date (newest first)
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        if (posts.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 4rem 0; color: hsl(var(--muted-foreground));">
+              <p>No posts yet. Check back soon!</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = posts
+          .map(
+            (post) => `
+          <article class="blog-item">
+            <div class="blog-item-meta">
+              <span class="blog-item-category">${post.category}</span>
+              <span>${new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}</span>
+              <span>•</span>
+              <span>${post.readTime}</span>
+            </div>
+            <h3><a href="post.html?id=${post.id}">${post.title}</a></h3>
+            <p class="blog-item-excerpt">${post.excerpt}</p>
+            <div class="blog-item-footer">
+              <a href="post.html?id=${post.id}" class="read-more">
+                Read article
+                <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        `
+          )
+          .join('');
+
+        lucide.createIcons();
+      }
+
+      loadBlogPosts();
+      lucide.createIcons();
+    </script>
   </body>
 </html>

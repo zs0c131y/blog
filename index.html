@@ -5,138 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Blog</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="nav-brand">
-        <a href="#home">My Blog</a>
-      </div>
-      <div class="nav-links">
-        <a href="#home" class="active">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="#about">About</a>
-        <a href="dashboard.html" class="dashboard-link">
-          <i class="fas fa-dashboard"></i> Dashboard
-        </a>
-      </div>
-      <div class="mobile-nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">My Blog</a>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#about">About</a>
+          <a href="login.html">Dashboard</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
+          </button>
+        </div>
+        <button class="mobile-nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section class="hero">
       <div class="hero-content">
-        <h1>Welcome to My Blog</h1>
+        <h1>Thoughts, stories and ideas</h1>
         <p>
-          Exploring ideas, sharing knowledge, and documenting my journey through
-          technology and life.
+          A collection of writings about technology, creativity, and the things
+          that matter.
         </p>
-        <a href="#blog" class="cta-button">Explore Posts</a>
+        <div class="hero-actions">
+          <a href="blog.html" class="btn btn-primary">
+            Read the blog
+            <i data-lucide="arrow-right"></i>
+          </a>
+          <a href="#about" class="btn btn-outline">Learn more</a>
+        </div>
       </div>
     </section>
 
-    <!-- Blog Posts Section -->
-    <section class="blog-section" id="blog">
-      <h2>Featured Posts</h2>
-      <div class="blog-grid">
-        <article class="blog-card">
-          <img
-            src="https://placehold.co/800x600/0a0a0a/3b82f6?text=Web+Development"
-            alt="Web Development"
-          />
-          <div class="blog-content">
-            <div class="blog-category">Technology</div>
-            <h3>Getting Started with Web Development</h3>
-            <div class="blog-meta">
-              <span class="date">April 3, 2024</span>
-              <span class="read-time">5 min read</span>
-            </div>
-            <p class="excerpt">
-              Learn the basics of HTML, CSS, and JavaScript to start your web
-              development journey.
-            </p>
-            <a href="blog.html" class="read-more">Read More</a>
-          </div>
-        </article>
-        <article class="blog-card">
-          <img
-            src="https://placehold.co/800x600/0a0a0a/3b82f6?text=Photography"
-            alt="Photography"
-          />
-          <div class="blog-content">
-            <div class="blog-category">Photography</div>
-            <h3>The Art of Photography</h3>
-            <div class="blog-meta">
-              <span class="date">April 2, 2024</span>
-              <span class="read-time">7 min read</span>
-            </div>
-            <p class="excerpt">
-              Discover essential tips and techniques for capturing stunning
-              photographs.
-            </p>
-            <a href="blog.html" class="read-more">Read More</a>
-          </div>
-        </article>
-        <article class="blog-card">
-          <img
-            src="https://placehold.co/800x600/0a0a0a/3b82f6?text=Travel"
-            alt="Travel"
-          />
-          <div class="blog-content">
-            <div class="blog-category">Travel</div>
-            <h3>Travel Adventures</h3>
-            <div class="blog-meta">
-              <span class="date">April 1, 2024</span>
-              <span class="read-time">6 min read</span>
-            </div>
-            <p class="excerpt">
-              Exploring hidden gems and must-visit destinations around the
-              world.
-            </p>
-            <a href="blog.html" class="read-more">Read More</a>
-          </div>
-        </article>
+    <!-- Featured Posts -->
+    <section class="blog-section">
+      <div class="section-header">
+        <h2>Recent posts</h2>
+        <p>Latest writings and updates</p>
+      </div>
+
+      <div class="blog-list" id="featuredPosts">
+        <!-- Posts will be loaded dynamically -->
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem">
+        <a href="blog.html" class="btn btn-outline">
+          View all posts
+          <i data-lucide="arrow-right"></i>
+        </a>
       </div>
     </section>
 
     <!-- About Section -->
     <section class="about-section" id="about">
-      <h2>About Me</h2>
+      <div class="section-header">
+        <h2>About</h2>
+      </div>
       <div class="about-content">
-        <img
-          src="https://placehold.co/300x300/0a0a0a/3b82f6?text=Profile"
-          alt="Profile Picture"
-          class="profile-pic"
-        />
         <div class="about-text">
           <p>
-            Hello! I'm a passionate blogger sharing my thoughts and experiences
-            on technology, photography, and travel. With a background in web
-            development, I love exploring new technologies and sharing my
-            knowledge with others.
+            I'm a writer and creator sharing my thoughts on technology,
+            design, and the creative process. This blog is my space to explore
+            ideas, document my journey, and connect with like-minded individuals.
           </p>
           <p>
-            When I'm not coding, you can find me behind the camera capturing
-            moments or planning my next adventure. This blog is my way of
-            documenting my journey and hopefully inspiring others along the way.
+            When I'm not writing, you'll find me building things, reading, or
+            exploring new places. I believe in the power of ideas and the
+            importance of sharing knowledge openly.
           </p>
-          <div class="social-links">
-            <a href="#" target="_blank">Twitter</a>
-            <a href="#" target="_blank">GitHub</a>
-            <a href="#" target="_blank">LinkedIn</a>
-          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" target="_blank">
+            <i data-lucide="twitter"></i>
+            Twitter
+          </a>
+          <a href="#" target="_blank">
+            <i data-lucide="github"></i>
+            GitHub
+          </a>
+          <a href="#" target="_blank">
+            <i data-lucide="linkedin"></i>
+            LinkedIn
+          </a>
         </div>
       </div>
     </section>
@@ -146,25 +109,23 @@
       <div class="footer-content">
         <div class="footer-section">
           <h3>My Blog</h3>
-          <p>Sharing thoughts and experiences through words.</p>
+          <p>Thoughts, stories and ideas.</p>
         </div>
         <div class="footer-section">
-          <h3>Quick Links</h3>
+          <h3>Links</h3>
           <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html">Dashboard</a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h3>Connect</h3>
           <div class="social-links">
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#">Twitter</a>
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
           </div>
         </div>
       </div>
@@ -174,5 +135,80 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+      // Load featured posts
+      function loadFeaturedPosts() {
+        const storedPosts = localStorage.getItem('blogPosts');
+        let posts = [];
+
+        if (storedPosts) {
+          posts = JSON.parse(storedPosts);
+        } else {
+          // Default posts
+          posts = [
+            {
+              id: 1,
+              title: "Getting Started with Web Development",
+              category: "technology",
+              date: "2024-04-03",
+              excerpt: "Learn the basics of HTML, CSS, and JavaScript to start your web development journey. A comprehensive guide for beginners.",
+              readTime: "5 min read",
+            },
+            {
+              id: 2,
+              title: "The Art of Photography",
+              category: "photography",
+              date: "2024-04-02",
+              excerpt: "Discover essential tips and techniques for capturing stunning photographs that tell a story.",
+              readTime: "7 min read",
+            },
+            {
+              id: 3,
+              title: "Travel Adventures",
+              category: "travel",
+              date: "2024-04-01",
+              excerpt: "Exploring hidden gems and must-visit destinations around the world, one journey at a time.",
+              readTime: "6 min read",
+            },
+          ];
+        }
+
+        const container = document.getElementById('featuredPosts');
+        const recentPosts = posts.slice(0, 3);
+
+        container.innerHTML = recentPosts
+          .map(
+            (post) => `
+          <article class="blog-item">
+            <div class="blog-item-meta">
+              <span class="blog-item-category">${post.category}</span>
+              <span>${new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}</span>
+              <span>•</span>
+              <span>${post.readTime}</span>
+            </div>
+            <h3><a href="post.html?id=${post.id}">${post.title}</a></h3>
+            <p class="blog-item-excerpt">${post.excerpt}</p>
+            <div class="blog-item-footer">
+              <a href="post.html?id=${post.id}" class="read-more">
+                Read article
+                <i data-lucide="arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        `
+          )
+          .join('');
+
+        lucide.createIcons();
+      }
+
+      loadFeaturedPosts();
+      lucide.createIcons();
+    </script>
   </body>
 </html>

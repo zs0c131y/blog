@@ -21,15 +21,38 @@ function formatDate(dateString) {
   return new Date(dateString).toLocaleDateString('en-US', options);
 }
 
-// Show success message
-function showSuccessMessage(message) {
-  const successDiv = document.createElement('div');
-  successDiv.className = 'success-message';
-  successDiv.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-  document.body.appendChild(successDiv);
+// Calculate stats
+function updateStats() {
+  const posts = getPosts();
+  const currentMonth = new Date().getMonth();
+  const currentYear = new Date().getFullYear();
+
+  const thisMonthPosts = posts.filter(post => {
+    const postDate = new Date(post.date);
+    return postDate.getMonth() === currentMonth && postDate.getFullYear() === currentYear;
+  });
+
+  document.getElementById('totalPosts').textContent = posts.length;
+  document.getElementById('thisMonth').textContent = thisMonthPosts.length;
+}
+
+// Show success toast
+function showSuccessToast(message) {
+  const existingToast = document.querySelector('.success-toast');
+  if (existingToast) {
+    existingToast.remove();
+  }
+
+  const toast = document.createElement('div');
+  toast.className = 'success-toast';
+  toast.innerHTML = `<i data-lucide="check-circle"></i><span>${message}</span>`;
+  document.body.appendChild(toast);
+
+  // Initialize Lucide icons in the toast
+  lucide.createIcons();
 
   setTimeout(() => {
-    successDiv.remove();
+    toast.remove();
   }, 3000);
 }
 
@@ -37,6 +60,7 @@ function showSuccessMessage(message) {
 const postForm = document.getElementById('postForm');
 const postsList = document.getElementById('postsList');
 const postCount = document.getElementById('postCount');
+const postsSearch = document.getElementById('postsSearch');
 const formTitle = document.getElementById('formTitle');
 const submitBtnText = document.getElementById('submitBtnText');
 const resetBtn = document.getElementById('resetBtn');
@@ -47,19 +71,25 @@ const cancelDelete = document.getElementById('cancelDelete');
 
 let editingPostId = null;
 let deletingPostId = null;
+let allPosts = [];
 
 // Render posts list
-function renderPostsList() {
-  const posts = getPosts();
-  postCount.textContent = `${posts.length} ${posts.length === 1 ? 'post' : 'posts'}`;
+function renderPostsList(posts = null) {
+  if (posts === null) {
+    posts = getPosts();
+  }
+
+  allPosts = posts;
+  postCount.textContent = posts.length;
 
   if (posts.length === 0) {
     postsList.innerHTML = `
       <div class="empty-state">
-        <i class="fas fa-file-alt"></i>
+        <i data-lucide="file-text"></i>
         <p>No posts yet. Create your first post!</p>
       </div>
     `;
+    lucide.createIcons();
     return;
   }
 
@@ -71,24 +101,44 @@ function renderPostsList() {
       <div class="post-item-category">${post.category}</div>
       <div class="post-item-title">${post.title}</div>
       <div class="post-item-meta">
-        <span><i class="far fa-calendar"></i> ${formatDate(post.date)}</span>
-        <span><i class="far fa-clock"></i> ${post.readTime}</span>
+        <span><i data-lucide="calendar"></i> ${formatDate(post.date)}</span>
+        <span><i data-lucide="clock"></i> ${post.readTime}</span>
       </div>
       <div class="post-item-excerpt">${post.excerpt}</div>
       <div class="post-item-actions">
-        <button class="btn-edit" onclick="editPost(${post.id})">
-          <i class="fas fa-edit"></i> Edit
+        <button class="btn-ghost" onclick="editPost(${post.id})">
+          <i data-lucide="pencil"></i> Edit
         </button>
-        <button class="btn-delete" onclick="deletePost(${post.id})">
-          <i class="fas fa-trash"></i> Delete
-        </button>
-        <a href="post.html?id=${post.id}" class="btn-secondary" target="_blank">
-          <i class="fas fa-eye"></i> View
+        <a href="post.html?id=${post.id}" class="btn-ghost" target="_blank">
+          <i data-lucide="eye"></i> View
         </a>
+        <button class="btn-danger" onclick="deletePost(${post.id})">
+          <i data-lucide="trash-2"></i> Delete
+        </button>
       </div>
     </div>
   `).join('');
+
+  lucide.createIcons();
 }
+
+// Search posts
+postsSearch.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+
+  if (!searchTerm) {
+    renderPostsList();
+    return;
+  }
+
+  const filteredPosts = allPosts.filter(post =>
+    post.title.toLowerCase().includes(searchTerm) ||
+    post.excerpt.toLowerCase().includes(searchTerm) ||
+    post.category.toLowerCase().includes(searchTerm)
+  );
+
+  renderPostsList(filteredPosts);
+});
 
 // Edit post
 window.editPost = function(id) {
@@ -128,9 +178,11 @@ confirmDelete.addEventListener('click', () => {
     const filteredPosts = posts.filter(p => p.id !== deletingPostId);
     savePosts(filteredPosts);
     renderPostsList();
+    updateStats();
     deleteModal.classList.remove('active');
-    showSuccessMessage('Post deleted successfully!');
+    showSuccessToast('Post deleted successfully!');
     deletingPostId = null;
+    lucide.createIcons();
   }
 });
 
@@ -140,12 +192,10 @@ cancelDelete.addEventListener('click', () => {
   deletingPostId = null;
 });
 
-// Close modal on background click
-deleteModal.addEventListener('click', (e) => {
-  if (e.target === deleteModal) {
-    deleteModal.classList.remove('active');
-    deletingPostId = null;
-  }
+// Close modal on backdrop click
+document.querySelector('.modal-backdrop')?.addEventListener('click', () => {
+  deleteModal.classList.remove('active');
+  deletingPostId = null;
 });
 
 // Reset form
@@ -190,7 +240,7 @@ postForm.addEventListener('submit', (e) => {
         content
       };
       savePosts(posts);
-      showSuccessMessage('Post updated successfully!');
+      showSuccessToast('Post updated successfully!');
     }
   } else {
     // Create new post
@@ -198,7 +248,7 @@ postForm.addEventListener('submit', (e) => {
       id: generateId(),
       title,
       category,
-      date: new Date().toISOString().split('T')[0], // Current date in YYYY-MM-DD format
+      date: new Date().toISOString().split('T')[0],
       readTime,
       image,
       excerpt,
@@ -207,12 +257,15 @@ postForm.addEventListener('submit', (e) => {
 
     posts.push(newPost);
     savePosts(posts);
-    showSuccessMessage('Post published successfully!');
+    showSuccessToast('Post published successfully!');
   }
 
   renderPostsList();
+  updateStats();
   resetForm();
 });
 
 // Initialize
 renderPostsList();
+updateStats();
+lucide.createIcons();

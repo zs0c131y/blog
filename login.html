@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - My Blog</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="logo-circle">
+            <i data-lucide="lock-keyhole"></i>
+          </div>
+          <h1>Welcome Back</h1>
+          <p>Enter your password to access the dashboard</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <div class="form-group">
+            <label for="password">
+              <i data-lucide="key"></i>
+              Password
+            </label>
+            <div class="input-wrapper">
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+                autofocus
+              />
+              <button type="button" id="togglePassword" class="toggle-password">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="errorMessage" class="error-message" style="display: none;">
+            <i data-lucide="alert-circle"></i>
+            <span>Incorrect password. Please try again.</span>
+          </div>
+
+          <button type="submit" class="btn-login">
+            <span>Sign In</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <p class="hint">
+            <i data-lucide="info"></i>
+            Default password: <code>admin123</code>
+          </p>
+          <a href="index.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            Back to Home
+          </a>
+        </div>
+      </div>
+
+      <div class="decorative-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      const DEFAULT_PASSWORD = 'admin123';
+      const loginForm = document.getElementById('loginForm');
+      const passwordInput = document.getElementById('password');
+      const errorMessage = document.getElementById('errorMessage');
+      const togglePassword = document.getElementById('togglePassword');
+
+      // Toggle password visibility
+      togglePassword.addEventListener('click', () => {
+        const type = passwordInput.type === 'password' ? 'text' : 'password';
+        passwordInput.type = type;
+
+        const icon = togglePassword.querySelector('i');
+        icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
+        lucide.createIcons();
+      });
+
+      // Check if already logged in
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        window.location.href = 'dashboard.html';
+      }
+
+      // Handle login
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const password = passwordInput.value;
+
+        if (password === DEFAULT_PASSWORD) {
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('loginTime', Date.now().toString());
+          window.location.href = 'dashboard.html';
+        } else {
+          errorMessage.style.display = 'flex';
+          passwordInput.value = '';
+          passwordInput.focus();
+
+          // Shake animation
+          loginForm.classList.add('shake');
+          setTimeout(() => loginForm.classList.remove('shake'), 500);
+        }
+      });
+
+      // Hide error on input
+      passwordInput.addEventListener('input', () => {
+        errorMessage.style.display = 'none';
+      });
+    </script>
+  </body>
+</html>

@@ -15,26 +15,28 @@
   <body>
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="nav-brand">
-        <a href="index.html">My Blog</a>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#about">About</a>
-        <a href="dashboard.html" class="active dashboard-link">
-          <i data-lucide="layout-dashboard" class="icon-sm"></i>
-          Dashboard
-        </a>
-        <button id="logoutBtn" class="btn-logout">
-          <i data-lucide="log-out" class="icon-sm"></i>
-          Logout
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">My Blog</a>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="dashboard.html" class="active">Dashboard</a>
+          <button id="logoutBtn" class="btn-logout">
+            <i data-lucide="log-out"></i>
+            Logout
+          </button>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
+          </button>
+        </div>
+        <button class="mobile-nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
-      </div>
-      <div class="mobile-nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
       </div>
     </nav>
 
@@ -261,11 +263,9 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/dashboard.js"></script>
     <script>
-      // Initialize Lucide icons
-      lucide.createIcons();
-
       // Check authentication
       if (localStorage.getItem('isLoggedIn') !== 'true') {
         window.location.href = 'login.html';
@@ -277,6 +277,11 @@
         localStorage.removeItem('loginTime');
         window.location.href = 'login.html';
       });
+
+      // Initialize Lucide icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
     </script>
   </body>
 </html>

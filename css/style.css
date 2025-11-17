@@ -127,38 +127,40 @@ body {
 }
 
 .theme-toggle {
-  width: 40px;
-  height: 40px;
-  padding: 0.5rem;
+  min-width: 44px;
+  height: 44px;
+  padding: 0.75rem;
   display: flex !important;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius);
-  border: 1.5px solid hsl(var(--border));
+  border-radius: calc(var(--radius) + 2px);
+  border: 2px solid hsl(var(--foreground) / 0.2);
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   cursor: pointer;
   transition: all 0.15s ease;
   flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .theme-toggle:hover {
   background: hsl(var(--accent));
-  border-color: hsl(var(--foreground) / 0.3);
-  transform: scale(1.05);
+  border-color: hsl(var(--foreground) / 0.4);
+  transform: scale(1.1);
 }
 
 .theme-toggle svg,
 .theme-toggle i {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: block;
+  stroke-width: 2;
 }
 
 .theme-toggle .sun-icon,
 .theme-toggle .moon-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   display: block;
 }
 

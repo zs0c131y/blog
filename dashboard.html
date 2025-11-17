@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - My Blog</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <a href="index.html">My Blog</a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="index.html#about">About</a>
+        <a href="dashboard.html" class="active">
+          <i class="fas fa-dashboard"></i> Dashboard
+        </a>
+      </div>
+      <div class="mobile-nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h1>Blog Dashboard</h1>
+        <p>Create and manage your blog posts</p>
+      </div>
+
+      <div class="dashboard-content">
+        <!-- Create/Edit Post Form -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h2 id="formTitle">Create New Post</h2>
+            <button id="resetBtn" class="btn-secondary" style="display: none;">
+              <i class="fas fa-plus"></i> New Post
+            </button>
+          </div>
+
+          <form id="postForm" class="post-form">
+            <input type="hidden" id="postId" />
+
+            <div class="form-group">
+              <label for="title">Post Title</label>
+              <input
+                type="text"
+                id="title"
+                placeholder="Enter a captivating title"
+                required
+              />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" required>
+                  <option value="">Select category</option>
+                  <option value="technology">Technology</option>
+                  <option value="photography">Photography</option>
+                  <option value="travel">Travel</option>
+                  <option value="lifestyle">Lifestyle</option>
+                  <option value="business">Business</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="readTime">Read Time</label>
+                <input
+                  type="text"
+                  id="readTime"
+                  placeholder="e.g., 5 min read"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="image">Image URL</label>
+              <input
+                type="url"
+                id="image"
+                placeholder="https://example.com/image.jpg"
+                required
+              />
+              <small>Tip: Use Unsplash.com for free high-quality images</small>
+            </div>
+
+            <div class="form-group">
+              <label for="excerpt">Excerpt</label>
+              <textarea
+                id="excerpt"
+                rows="3"
+                placeholder="A brief summary of your post (150-200 characters)"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea
+                id="content"
+                rows="12"
+                placeholder="Write your post content here... You can use HTML tags for formatting."
+                required
+              ></textarea>
+              <small>
+                HTML Tips: Use &lt;h2&gt; for headings, &lt;p&gt; for paragraphs,
+                &lt;ul&gt;&lt;li&gt; for lists, &lt;blockquote&gt; for quotes
+              </small>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-save"></i> <span id="submitBtnText">Publish Post</span>
+              </button>
+              <button type="button" id="cancelBtn" class="btn-secondary" style="display: none;">
+                <i class="fas fa-times"></i> Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Posts List -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h2>Your Posts</h2>
+            <span class="post-count" id="postCount">0 posts</span>
+          </div>
+
+          <div id="postsList" class="posts-list">
+            <!-- Posts will be dynamically loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <h3>Delete Post</h3>
+        <p>Are you sure you want to delete this post? This action cannot be undone.</p>
+        <div class="modal-actions">
+          <button id="confirmDelete" class="btn-danger">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+          <button id="cancelDelete" class="btn-secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <div class="social-links">
+            <a href="#" target="_blank">Twitter</a>
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

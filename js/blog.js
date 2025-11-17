@@ -1,65 +1,50 @@
-// Sample blog posts data
-const blogPosts = [
-  {
-    id: 1,
-    title: "Getting Started with Web Development",
-    category: "technology",
-    date: "2024-04-03",
-    excerpt:
-      "Learn the basics of HTML, CSS, and JavaScript to start your web development journey.",
-    image: "https://placehold.co/800x600/0a0a0a/3b82f6?text=Web+Development",
-    readTime: "5 min read",
-  },
-  {
-    id: 2,
-    title: "The Art of Photography",
-    category: "photography",
-    date: "2024-04-02",
-    excerpt:
-      "Discover essential tips and techniques for capturing stunning photographs.",
-    image: "https://placehold.co/800x600/0a0a0a/3b82f6?text=Photography",
-    readTime: "7 min read",
-  },
-  {
-    id: 3,
-    title: "Travel Adventures",
-    category: "travel",
-    date: "2024-04-01",
-    excerpt:
-      "Exploring hidden gems and must-visit destinations around the world.",
-    image: "https://placehold.co/800x600/0a0a0a/3b82f6?text=Travel",
-    readTime: "6 min read",
-  },
-  {
-    id: 4,
-    title: "Modern JavaScript Features",
-    category: "technology",
-    date: "2024-03-30",
-    excerpt:
-      "Exploring the latest features in JavaScript and how to use them effectively.",
-    image: "https://placehold.co/800x600/0a0a0a/3b82f6?text=JavaScript",
-    readTime: "8 min read",
-  },
-  {
-    id: 5,
-    title: "Street Photography Tips",
-    category: "photography",
-    date: "2024-03-28",
-    excerpt:
-      "Master the art of street photography with these essential tips and techniques.",
-    image: "https://placehold.co/800x600/0a0a0a/3b82f6?text=Street+Photography",
-    readTime: "6 min read",
-  },
-  {
-    id: 6,
-    title: "Backpacking Through Europe",
-    category: "travel",
-    date: "2024-03-25",
-    excerpt: "A comprehensive guide to backpacking through Europe on a budget.",
-    image: "https://placehold.co/800x600/0a0a0a/3b82f6?text=Europe",
-    readTime: "10 min read",
-  },
-];
+// Get posts from localStorage or use default posts
+function getBlogPosts() {
+  const storedPosts = localStorage.getItem('blogPosts');
+  if (storedPosts) {
+    return JSON.parse(storedPosts);
+  }
+
+  // Default posts
+  const defaultPosts = [
+    {
+      id: 1,
+      title: "Getting Started with Web Development",
+      category: "technology",
+      date: "2024-04-03",
+      excerpt: "Learn the basics of HTML, CSS, and JavaScript to start your web development journey.",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
+      readTime: "5 min read",
+      content: "<p>Full content for web development post...</p>"
+    },
+    {
+      id: 2,
+      title: "The Art of Photography",
+      category: "photography",
+      date: "2024-04-02",
+      excerpt: "Discover essential tips and techniques for capturing stunning photographs.",
+      image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&h=600&fit=crop",
+      readTime: "7 min read",
+      content: "<p>Full content for photography post...</p>"
+    },
+    {
+      id: 3,
+      title: "Travel Adventures",
+      category: "travel",
+      date: "2024-04-01",
+      excerpt: "Exploring hidden gems and must-visit destinations around the world.",
+      image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop",
+      readTime: "6 min read",
+      content: "<p>Full content for travel post...</p>"
+    }
+  ];
+
+  // Save default posts to localStorage
+  localStorage.setItem('blogPosts', JSON.stringify(defaultPosts));
+  return defaultPosts;
+}
+
+const blogPosts = getBlogPosts();
 
 // DOM Elements
 const blogGrid = document.getElementById("blogGrid");
@@ -86,7 +71,7 @@ function createBlogCard(post) {
                     <span class="read-time">${post.readTime}</span>
                 </div>
                 <p class="excerpt">${post.excerpt}</p>
-                <a href="#" class="read-more">Read More</a>
+                <a href="post.html?id=${post.id}" class="read-more">Read More</a>
             </div>
         </article>
     `;

@@ -1,9 +1,27 @@
 // Mobile Navigation Toggle
-const navToggle = document.querySelector(".nav-toggle");
+const navToggle = document.querySelector(".mobile-nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-navToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}
+
+// Navbar scroll effect
+const navbar = document.querySelector(".navbar");
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+
+  lastScroll = currentScroll;
 });
 
 // Smooth Scrolling for Navigation Links

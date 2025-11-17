@@ -130,17 +130,25 @@ body {
   width: 36px;
   height: 36px;
   padding: 0;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius);
   border: 1px solid hsl(var(--border));
   background: hsl(var(--background));
   color: hsl(var(--foreground));
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .theme-toggle:hover {
   background: hsl(var(--accent));
+  border-color: hsl(var(--foreground) / 0.2);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
 }
 
 .mobile-nav-toggle {
@@ -473,6 +481,11 @@ body {
     width: 100%;
     text-align: left;
     padding: 0.75rem 1rem;
+  }
+
+  .theme-toggle {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .hero {

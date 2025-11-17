@@ -6,33 +6,30 @@
     <title>Blog Post - My Blog</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/post.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="nav-brand">
-        <a href="index.html">My Blog</a>
-      </div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#about">About</a>
-        <a href="dashboard.html" class="dashboard-link">
-          <i class="fas fa-dashboard"></i> Dashboard
-        </a>
-      </div>
-      <div class="mobile-nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">My Blog</a>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#about">About</a>
+          <a href="login.html">Dashboard</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
+          </button>
+        </div>
+        <button class="mobile-nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
 
@@ -58,18 +55,18 @@
 
       <div class="post-footer">
         <a href="blog.html" class="back-button">
-          <i class="fas fa-arrow-left"></i> Back to Blog
+          <i data-lucide="arrow-left"></i> Back to Blog
         </a>
         <div class="post-share">
           <span>Share:</span>
           <a href="#" class="share-btn" title="Share on Twitter">
-            <i class="fab fa-twitter"></i>
+            <i data-lucide="twitter"></i>
           </a>
           <a href="#" class="share-btn" title="Share on Facebook">
-            <i class="fab fa-facebook"></i>
+            <i data-lucide="facebook"></i>
           </a>
           <a href="#" class="share-btn" title="Share on LinkedIn">
-            <i class="fab fa-linkedin"></i>
+            <i data-lucide="linkedin"></i>
           </a>
         </div>
       </div>
@@ -102,6 +99,13 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
     <script src="js/post.js"></script>
+    <script>
+      // Initialize Lucide icons after everything loads
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    </script>
   </body>
 </html>
